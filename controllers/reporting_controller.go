@@ -34,7 +34,7 @@ func BukuTerlaris(c *gin.Context) {
 	pipeline := []bson.M{
 		{"$unwind": "$details"},
 		{"$group": bson.M{
-			"_id":           "$details.buku_id",
+			"_id":           "$details.id_buku",
 			"total_terjual": bson.M{"$sum": "$details.jumlah"},
 		}},
 		{"$sort": bson.M{"total_terjual": -1}},
