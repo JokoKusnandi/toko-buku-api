@@ -5,7 +5,6 @@ import (
 	"toko-buku-api/models"
 
 	"github.com/gin-gonic/gin"
-	"github.com/golang-jwt/jwt"
 	"github.com/golang-jwt/jwt/v5"
 )
 
@@ -26,6 +25,6 @@ func Login(c *gin.Context) {
 
 	tokenString, _ := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
 
-	C.JSON(200, gin.H{"token": tokenString})
+	c.JSON(200, gin.H{"token": tokenString})
 
 }

@@ -15,7 +15,7 @@ func AuthMiddlewares() gin.HandlerFunc {
 
 		if tokenString == "" {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "No Token"})
-			c.abort()
+			c.Abort()
 			return
 		}
 
@@ -29,7 +29,7 @@ func AuthMiddlewares() gin.HandlerFunc {
 
 		if err != nil || !token.Valid {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid Token"})
-			c.abort()
+			c.Abort()
 			return
 		}
 

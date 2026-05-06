@@ -4,10 +4,10 @@ import (
 	"context"
 	"log"
 	"os"
+	"github.com/joho/godotenv"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options"
 )
 
 // var DB *mongo.Database
@@ -41,7 +41,7 @@ func ConnectDB() {
 	uri := os.Getenv("MONGO_URI")
 	dbName := os.Getenv("DB_NAME")
 
-	client, err := mongo.Connect(context.TODO(), options.Client().applyURI(uri))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
 	if err != nil {
 		log.Fatal(err)
 	}

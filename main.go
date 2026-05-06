@@ -1,19 +1,23 @@
 package main
 
 import (
-	"os"
-	"toko-buku-api/config"
-	"toko-buku-api/routes"
+    "os"
+    "toko-buku-api/config"
+    "toko-buku-api/routes"
 
-	"github.com/gin-gonic/gin"
+    "github.com/gin-gonic/gin"
 )
 
 func main() {
-	r := gin.Default()
+    r := gin.Default()
 
-	config.ConnectDB()
-	routes.SetUpRoutes()
+    // Connect ke MongoDB
+    config.ConnectDB()
 
-	port := os.Getenv("PORT")
-	r.Run(port)
+    // Setup routes dengan engine Gin
+    routes.SetUpRoutes(r)
+
+    // Jalankan server
+    port := os.Getenv("PORT")
+    r.Run(":" + port) // tambahkan ":" agar port dikenali
 }
